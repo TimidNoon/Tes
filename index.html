@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Арена Битв</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #1a1a2e;
+      color: white;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h1 { color: #4ecca3; }
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚔️ Арена Битв</h1>
+  <p>Web App загружена! Позже здесь будет игра.</p>
+  <button onclick="closeApp()">Закрыть</button>
+
+  <!-- Telegram WebApp SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    // Говорим Telegram, что приложение готово
+    Telegram.WebApp.ready();
+
+    // Опционально: получаем данные пользователя
+    const user = Telegram.WebApp.initDataUnsafe.user;
+    if (user) {
+      document.querySelector('p').innerHTML += `<br>Привет, ${user.first_name}!`;
+    }
+
+    function closeApp() {
+      Telegram.WebApp.close();
+    }
+  </script>
+</body>
+</html>
