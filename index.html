@@ -1,55 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Арена Битв</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 20px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #1a1a2e;
-      color: white;
-      text-align: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    h1 { color: #4ecca3; }
-    button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 18px;
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Моя Telegram Игра</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <h1>⚔️ Арена Битв</h1>
-  <p>Web App загружена! Позже здесь будет игра.</p>
-  <button onclick="closeApp()">Закрыть</button>
 
-  <!-- Telegram WebApp SDK -->
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script>
-    // Говорим Telegram, что приложение готово
-    Telegram.WebApp.ready();
+  <!-- Секции -->
+  <div class="content">
+    <!-- Сражения -->
+    <div id="battles" class="section active">
+      <img src="https://via.placeholder.com/300x200/333/999?text=Арена" alt="Арена" class="arena-image">
+      <button class="btn" id="battle-btn">В бой!</button>
+    </div>
 
-    // Опционально: получаем данные пользователя
-    const user = Telegram.WebApp.initDataUnsafe.user;
-    if (user) {
-      document.querySelector('p').innerHTML += `<br>Привет, ${user.first_name}!`;
-    }
+    <!-- Магазин -->
+    <div id="shop" class="section">
+      <h2>Магазин</h2>
+      <p>Здесь будет магазин.</p>
+    </div>
 
-    function closeApp() {
-      Telegram.WebApp.close();
-    }
-  </script>
+    <!-- Армия -->
+    <div id="army" class="section">
+      <h2>Армия</h2>
+      <p>Здесь будет управление армией.</p>
+    </div>
+
+    <!-- Клан -->
+    <div id="clan" class="section">
+      <h2>Клан</h2>
+      <p>Здесь будет клан.</p>
+    </div>
+
+    <!-- События -->
+    <div id="events" class="section">
+      <h2>События</h2>
+      <p>Здесь будут события.</p>
+    </div>
+  </div>
+
+  <!-- Нижнее меню -->
+  <div class="menu">
+    <button class="menu-btn" data-section="shop">
+      <i>🛒</i>
+      <span>Магазин</span>
+    </button>
+    <button class="menu-btn" data-section="army">
+      <i>⚔️</i>
+      <span>Армия</span>
+    </button>
+    <button class="menu-btn active" data-section="battles">
+      <i>🛡️</i>
+      <span>Сражения</span>
+    </button>
+    <button class="menu-btn" data-section="clan">
+      <i>🏰</i>
+      <span>Клан</span>
+    </button>
+    <button class="menu-btn" data-section="events">
+      <i>📅</i>
+      <span>События</span>
+    </button>
+  </div>
+
 </body>
 </html>
