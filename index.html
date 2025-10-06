@@ -10,62 +10,72 @@
 </head>
 <body>
 
-  <!-- Секции -->
-  <div class="content">
+  <!-- Основной контейнер контента -->
+  <div class="content-container">
     <!-- Сражения -->
     <div id="battles" class="section active">
-      <img src="https://via.placeholder.com/300x200/333/999?text=Арена" alt="Арена" class="arena-image">
-      <button class="btn" id="battle-btn">В бой!</button>
+      <div class="arena-container">
+        <img src="https://via.placeholder.com/300x200/2c2c2c/ffffff?text=⚔️+АРЕНА" alt="Арена" class="arena-image">
+        <button class="battle-btn">В БОЙ!</button>
+      </div>
     </div>
 
     <!-- Магазин -->
     <div id="shop" class="section">
-      <h2>Магазин</h2>
-      <p>Здесь будет магазин.</p>
+      <div class="placeholder">
+        <h2>🛒 Магазин</h2>
+        <p>Страница находится в разработке.</p>
+      </div>
     </div>
 
     <!-- Армия -->
     <div id="army" class="section">
-      <h2>Армия</h2>
-      <p>Здесь будет управление армией.</p>
+      <div class="placeholder">
+        <h2>⚔️ Армия</h2>
+        <p>Страница находится в разработке.</p>
+      </div>
     </div>
 
     <!-- Клан -->
     <div id="clan" class="section">
-      <h2>Клан</h2>
-      <p>Здесь будет клан.</p>
+      <div class="placeholder">
+        <h2>🏰 Клан</h2>
+        <p>Страница находится в разработке.</p>
+      </div>
     </div>
 
     <!-- События -->
     <div id="events" class="section">
-      <h2>События</h2>
-      <p>Здесь будут события.</p>
+      <div class="placeholder">
+        <h2>📅 События</h2>
+        <p>Страница находится в разработке.</p>
+      </div>
     </div>
   </div>
 
   <!-- Нижнее меню -->
-  <div class="menu">
-    <button class="menu-btn" data-section="shop">
-      <i>🛒</i>
-      <span>Магазин</span>
+  <nav class="bottom-menu">
+    <button class="menu-item" data-section="shop">
+      <span class="menu-icon">🛒</span>
+      <span class="menu-label">Магазин</span>
     </button>
-    <button class="menu-btn" data-section="army">
-      <i>⚔️</i>
-      <span>Армия</span>
+    <button class="menu-item" data-section="army">
+      <span class="menu-icon">⚔️</span>
+      <span class="menu-label">Армия</span>
     </button>
-    <button class="menu-btn active" data-section="battles">
-      <i>🛡️</i>
-      <span>Сражения</span>
+    <button class="menu-item active" data-section="battles">
+      <span class="menu-icon">🛡️</span>
+      <span class="menu-label">Сражения</span>
     </button>
-    <button class="menu-btn" data-section="clan">
-      <i>🏰</i>
-      <span>Клан</span>
+    <button class="menu-item" data-section="clan">
+      <span class="menu-icon">🏰</span>
+      <span class="menu-label">Клан</span>
     </button>
-    <button class="menu-btn" data-section="events">
-      <i>📅</i>
-      <span>События</span>
+    <button class="menu-item" data-section="events">
+      <span class="menu-icon">📅</span>
+      <span class="menu-label">События</span>
     </button>
-  </div>
+  </nav>
 
 </body>
 </html>
