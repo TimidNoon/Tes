@@ -1,4 +1,3 @@
-// Ожидаем полной загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
   // Инициализация Telegram WebApp
   const tg = window.Telegram?.WebApp;
@@ -7,37 +6,40 @@ document.addEventListener('DOMContentLoaded', () => {
     tg.ready();
   }
 
-  // Кэшируем элементы
+  // Элементы
   const sections = document.querySelectorAll('.section');
-  const menuButtons = document.querySelectorAll('.menu-btn');
-  const battleButton = document.getElementById('battle-btn');
+  const menuItems = document.querySelectorAll('.menu-item');
 
-  // Функция переключения секции
+  // Переключение раздела
   function switchSection(sectionId) {
-    // Скрыть все секции
+    // Скрыть все
     sections.forEach(section => section.classList.remove('active'));
-    // Показать нужную
+    // Показать нужный
     document.getElementById(sectionId).classList.add('active');
 
-    // Обновить активную кнопку в меню
-    menuButtons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.section === sectionId);
+    // Обновить активный пункт меню
+    menuItems.forEach(item => {
+      item.classList.toggle('active', item.dataset.section === sectionId);
     });
   }
 
-  // Назначаем обработчики на кнопки меню
-  menuButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const sectionId = btn.dataset.section;
+  // Назначить обработчики
+  menuItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const sectionId = item.dataset.section;
       switchSection(sectionId);
     });
   });
 
-  // Обработчик кнопки "В бой"
-  if (battleButton) {
-    battleButton.addEventListener('click', () => {
-      alert('Бой начался! (Это заглушка)');
-      // Здесь можно добавить логику: отправку запроса, открытие модалки и т.д.
+  // Кнопка "В бой"
+  const battleBtn = document.querySelector('.battle-btn');
+  if (battleBtn) {
+    battleBtn.addEventListener('click', () => {
+      if (tg) {
+        tg.showAlert('Бой начался! 🛡️\n(Это заглушка)');
+      } else {
+        alert('Бой начался! 🛡️\n(Это заглушка)');
+      }
     });
   }
 });
