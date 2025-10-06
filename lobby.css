@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #121212;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
   color: white;
   height: 100vh;
   display: flex;
@@ -14,87 +14,131 @@ body {
   overflow: hidden;
 }
 
-.content {
+/* Контейнер для основного контента (всё, кроме меню) */
+.content-container {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 20px 20px 90px; /* отступ снизу, чтобы контент не перекрывался меню */
-  overflow-y: auto;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 90px; /* отступ под меню */
+  overflow: hidden;
 }
 
+/* Секции (разделы) */
 .section {
   display: none;
   width: 100%;
-  max-width: 500px;
+  max-width: 480px;
   text-align: center;
+  padding: 20px;
 }
 
 .section.active {
   display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Стили для арены */
+.arena-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .arena-image {
   width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  max-width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.btn {
-  background: #4CAF50;
+.battle-btn {
+  background: linear-gradient(120deg, #ff416c, #ff4b2b);
   color: white;
   border: none;
-  padding: 12px 24px;
+  padding: 14px 32px;
   font-size: 18px;
-  border-radius: 8px;
+  font-weight: bold;
+  border-radius: 50px;
   cursor: pointer;
-  margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(255, 75, 43, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn:hover {
-  opacity: 0.9;
+.battle-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(255, 75, 43, 0.6);
 }
 
-/* === Нижнее меню === */
-.menu {
+/* Заглушки */
+.placeholder {
+  padding: 40px 20px;
+}
+
+.placeholder h2 {
+  margin-bottom: 16px;
+  font-size: 24px;
+  color: #4fc3f7;
+}
+
+.placeholder p {
+  font-size: 16px;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+/* Нижнее меню */
+.bottom-menu {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-between; /* равномерно распределяет кнопки */
+  justify-content: space-around;
   align-items: center;
-  background: #1e1e1e;
-  padding: 12px 10px;
-  border-top: 1px solid #333;
+  background: rgba(20, 20, 30, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 8px;
   width: 100%;
-  max-width: 500px; /* чтобы не растягивалось на очень широких экранах */
-  margin: 0 auto; /* центрирует, если экран шире 500px */
+  max-width: 500px;
+  margin: 0 auto;
+  z-index: 100;
 }
 
-.menu-btn {
+.menu-item {
   background: none;
   border: none;
   color: #aaa;
   font-size: 12px;
-  padding: 6px 4px;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 1; /* каждая кнопка занимает равную ширину */
   justify-content: center;
-  min-width: 0; /* позволяет сжиматься на маленьких экранах */
+  cursor: pointer;
+  flex: 1;
+  padding: 6px 4px;
+  transition: color 0.2s;
 }
 
-.menu-btn.active {
-  color: #4CAF50;
+.menu-item.active {
+  color: #ff4b2b;
 }
 
-.menu-btn i {
+.menu-icon {
   font-size: 20px;
   margin-bottom: 4px;
+  line-height: 1;
+}
+
+.menu-label {
+  white-space: nowrap;
+  text-align: center;
 }
